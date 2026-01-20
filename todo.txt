@@ -1,0 +1,6 @@
+[ ] Use the Sprite's services API to configure code-server, rather than an exec
+    [ ] Use --trusted-origin=* to work behind the Sprite's proxy
+    [ ] Generate a longer password on this side, and use --password argument to set it on code-server
+[ ] Change the behavior of the delete button so a model prompts confirmation with typing the name
+[ ] Add user management panel that admin users can use to add/remove users
+
