@@ -1,0 +1,23 @@
+requires 'Dist::Zilla';
+requires 'Archive::Zip';
+requires 'Minion';
+requires 'Mojolicious::Plugin::XslateRenderer';
+requires 'Mojolicious::Plugin::RenderFile';
+requires 'Mojo::Pg';
+requires 'DateTime::Format::Pg';
+requires 'LWP::UserAgent';
+requires 'XML::RSS';
+requires 'Test::Postgresql58';
+requires 'Test::More';
+requires 'Test::Deep';
+requires 'DBIx::Class';
+requires 'DBIx::Class::InflateColumn::Serializer';
+requires 'DBIx::Class::Schema::ResultSetNames';
+requires 'DBIx::Class::Schema::Config';
+requires 'DBIx::Class::DeploymentHandler';
+requires 'Data::GUID';
+requires 'MooseX::AttributeShortcuts';
+requires 'MooseX::Getopt';
+requires 'DBD::Pg';
+
+

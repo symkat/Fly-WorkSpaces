@@ -1,0 +1,77 @@
+% layout 'bootstrap';
+% title 'Dashboard';
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Fly Workspace</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link" target="_blank" href="<%= $c->url_for( 'minion' ) %>">Minion</a>
+        </li>
+      </ul>
+      <div class="d-flex">
+          <a class="nav-link" href="<%= $c->url_for( 'do_logout' ) %>">Logout</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+
+%= include '_base/status_window';
+   
+
+    <div class="row text-center">
+
+
+        <h1>You are in the delete area.</h1>
+    
+        <div class="mt-5"></div>
+        
+        <h1>Do you mean to be in the delete area?</h1>
+        
+        <div class="mt-5"></div>
+
+        <h1><a href="<%= $c->url_for('show_dashboard') %>">If you don't want your entire work space deleted and all data lost -- click this giant link here to get away from the danger zone!i</a></h1>
+
+        <div class="mt-5"></div>
+
+        <h3>Just a reminder -- this is for your work space called <strong><span class="text-danger"><%= $sprite->display_name %></span></strong></h3>
+        
+        <div class="mt-5"></div>
+        
+        <h4>When you made you, you said: <span class="text-warning"><%= $sprite->description %></span>... do you really want to delete it?</h4>
+        <div class="mt-5"></div>
+        <div class="mt-5"></div>
+
+
+
+
+
+
+    <form method="post" action="<%= $c->url_for('destroy_workspace')%>">
+        <input type="hidden" name="name" value="<%= $name %>" />
+        <button type="submit" class="btn btn-small btn-danger" href="<%= $c->url_for( 'destroy_workspace' ) %>">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 
+                    1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 
+                    0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+            </svg>
+
+        Yes, I promise I really want to delete this
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 
+                    1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 
+                    0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+            </svg>
+        </button>
+    </form>
+    </div>
+
+
+</main>

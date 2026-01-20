@@ -1,0 +1,2 @@
+
+fly launch --ha=false
