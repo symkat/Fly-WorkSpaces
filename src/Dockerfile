@@ -1,5 +1,4 @@
-# UPDATE THIS FROM ADDRESS WITH THE URL FROM `fly releases --image` in ../Fly-Mojo-Base
-FROM registry.fly.io/fly-mojo-base:deployment-01KEV37CSVEZRFQYNHN105PJCF
+FROM symkat/fly-mojo-base:latest
 
 USER app
 
@@ -21,4 +20,4 @@ RUN cd /home/app/src/Web; \
     cpanm --verbose --installdeps . ;\
     cpanm --verbose --installdeps .
 
-CMD sleep inf
+CMD [ "sleep", "inf" ]
