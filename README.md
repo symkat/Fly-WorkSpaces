@@ -7,13 +7,7 @@ This is a work in progress, feedback and contributions are welcome!
 
 # Installation
 
-First, launch Fly-Mojo-Base by running `cd Fly-Mojo-Base` and then `fly launch --ha=false`.  This will create a base image with the dependencies for the project.  See Fly's documentation for [using base images for faster deployments]( https://fly.io/docs/blueprints/using-base-images-for-faster-deployments/) for more information on this technique.
-
-You can get the URL for your base image by running `fly releases --image` in that directory.
-
-Copy the `DOCKER IMAGE` URL and update the `../src/Dockerfile` file to use this as the `FROM` line.
-
-Now enter the src directory with `cd ../src`.
+Clone this repository.
 
 Run `fly launch` to configure the application.
 
@@ -37,5 +31,3 @@ You'll need to add a user account to login.  Get a shell to one of the machines 
 You'll `cd /home/app/src/Web` and run `./script/fly_work_space create-user --help` to see how to create a user.
 
 Once you have a user set, you can login and begin creating workspaces!
-
-
