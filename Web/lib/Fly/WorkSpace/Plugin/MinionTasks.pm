@@ -48,6 +48,19 @@ sub register ( $self, $app, $config ) {
         $job->note( launch => "Running code-server and blocking for 12 seconds" );
         $sprites->sprite_exec( name => $sprite_name, cmd => [ 'code-server' ], timeout => 12 );
 
+#        Wired up to use the services API once it becomes GA -- this will 400 with 'service name required' until then,
+#        and we'll continue with the sprite_exec above.
+# 
+#        $job->note( launch => "Creating code-server service." );
+#        $res = $sprites->sprite_service_create( 
+#            name         => $sprite_name, 
+#            service_name => 'code-server', 
+#            cmd          => 'code-server', 
+#            args         => [ '--trusted-origins=*' ], 
+#            http_port    => 8080,
+#        );
+#        $job->note( service_return => $res );
+
         $job->note( extract => "Capturing generated password." );
         $res = $sprites->sprite_exec( name => $sprite_name, cmd => [ 'cat', '/home/sprite/.config/code-server/config.yaml' ] );
 

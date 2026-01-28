@@ -99,40 +99,31 @@ sub sprite_exec {
     #return decode_json($res->decoded_content);
 }
 
-sub create_screenshot_url {
+sub sprite_service_create {
     my ( $self, @in ) = @_;
-
+    
     my $args = ref $in[0] eq 'HASH' ? $in[0] : { @in };
 
-    die "Error: create_screenshot_url() requires a url argument.\n" unless 
-        $args->{url};
+    my $url = URI->new( $self->base_url. "/v1/sprites/" . $args->{name} . "/services/" . $args->{service_name} );
 
-    die "Error: create_screenshot_url() must be http(s)\n"
-        unless URI->new($args->{url})->scheme =~ /^https?$/;
+    my $req = HTTP::Request->new( PUT => $url );
+       $req->content_type( 'application/json');
+       $req->header( Authorization => 'Bearer ' . $self->api_key );
+       $req->content( encode_json( { 
+            cmd => $args->{cmd},
+            ( exists $args->{args}       ? ( args       => $args->{args}      )  : ( args  => [] ) ),
+            ( exists $args->{http_port}  ? ( http_port  => $args->{http_port} )  : (             ) ),
+            ( exists $args->{needs}      ? ( needs      => $args->{needs}     )  : ( needs => [] ) ),
+        }));
 
-    return sprintf( "%s/api/screenshot?resX=%d&resY=%d&outFormat=%s&waitTime=%d&isFullPage=%s&url=%s",
-        $self->base_url,
-        exists $args->{res_x}         ? $args->{res_x}         : $self->res_x,
-        exists $args->{res_y}         ? $args->{res_y}         : $self->res_y,
-        exists $args->{out_format}    ? $args->{out_format}    : $self->out_format,
-        exists $args->{wait_time}     ? $args->{wait_time}     : $self->wait_time,
-        exists $args->{is_full_page}  ? $args->{is_full_page}  : $self->is_full_page,
-        uri_encode($args->{url})
-    );
-}
+    print Dumper( $req );
 
-sub fetch_screenshot {
-    my ( $self, @in ) = @_;
-
-    my $args = ref $in[0] eq 'HASH' ? $in[0] : { @in };
+    my $res = $self->ua->request( $req );
     
-    my $res = $self->ua->get( $self->create_screenshot_url( $args ) );
-    
-    if ( $res->content_type eq 'application/json' ) {
-        die "Error: " . decode_json($res->decoded_content)->{details};
-    } 
+    print Dumper( $res );
 
     return $res;
 }
+
 
 1;
